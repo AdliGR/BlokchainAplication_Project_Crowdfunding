@@ -3,7 +3,7 @@ pragma solidity ^0.8.9;
 
 contract CrowdFunding {
     struct Campaign {
-        address: owner;
+        address owner;
         string title;
         string description;
         uint256 target;
@@ -23,7 +23,7 @@ contract CrowdFunding {
         Campaign storage campaign = campaigns[numberOfCampaigns];
 
         //is everything okay?
-        require(campaign.deadline < block.timestamp, "The deadline should be a date in the future")
+        require(campaign.deadline < block.timestamp, "The deadline should be a date in the future");
 
         campaign.owner = _owner;
         campaign.title = _title;
@@ -54,7 +54,7 @@ contract CrowdFunding {
     }
 
     function getDonators(uint256 _id) view public returns (address[] memory, uint256[] memory) {
-        return (campaigns[_id].donators, campaigns[_id].donations)
+        return (campaigns[_id].donators, campaigns[_id].donations);
     }
 
     function getCampaigns() public view returns (Campaign[] memory) {
